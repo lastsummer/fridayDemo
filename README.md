@@ -20,8 +20,10 @@ EJS：Embedded Javascript(EJS)是內嵌式的樣板引擎
 express 內建幫你取得querystring，使用方式為req.query.qstr
 
 ### 安裝nvm
-``` curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.32.1/install.sh | bash ```
-``` export NVM_DIR="$HOME/.nvm" ```
+``` 
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.32.1/install.sh | bash 
+export NVM_DIR="$HOME/.nvm" 
+```
 
 - 列出所有安裝node版本
 ``` nvm list ```
@@ -58,3 +60,9 @@ sudo nano /etc/hosts
 ### nano
 ctrl O： 儲存檔案
 ctrl X： 退出nano
+
+### HTTPS
+HTTP over SSL。
+SSL運用了「加密」、「訊息摘要(Message Digest)」、「數位憑證」等技術。
+
+### 建立SSL 憑證
