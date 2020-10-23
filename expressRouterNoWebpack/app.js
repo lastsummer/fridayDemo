@@ -26,7 +26,7 @@ app.use('/users', usersRouter);
 
 
 // error handler
-app.listen('6767', 'localhost', err => {
+app.listen('2368', 'localhost', err => {
   if (err) throw err
-  console.log(`> endpoint: http://localhost:6767`)
+  console.log(`> endpoint: http://localhost:2368`)
 })
