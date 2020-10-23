@@ -2,7 +2,7 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const fs = require('fs')
 
-const { showMessage } = require('./middleware/showMessage')
+const { showMessage, errorOccur } = require('./middleware/showMessage')
 
 const app = express()
 const port = process.env.port || 2368
@@ -20,7 +20,8 @@ app.use(
 )
 
 app.get('/', showMessage, function(req, res, next){
-  res.sendFile(__dirname + '/page/index.html',{},(err)=>{
+  
+  res.status(202).sendFile(__dirname + '/page/index.html',{},(err)=>{
     if(err) console.log(err)
   })
 });
@@ -38,6 +39,20 @@ app.post('/test', showMessage, function(req, res, next){
    fname: req.body.fname
  }))
 });
+
+app.get('/mustError', errorOccur, function(req, res, next){
+  res.status(200).sendFile(__dirname + '/page/index.html',{},(err)=>{
+    if(err) console.log(err)
+  })
+ });
+
+app.use(function (err, req, res, next) {
+  res.status(403).sendFile(__dirname + '/page/error.html',{},(e)=>{
+    if(e) console.log(e)
+  })
+})
+
+app.use('*', (req, res) => res.redirect(`https://www.google.com`))
 
 app.listen(port, 'localhost', err => {
   if (err) throw err
